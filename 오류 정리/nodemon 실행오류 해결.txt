@@ -1,0 +1,16 @@
+nodemon 실행시 "이 시스템에서 스크립트를 실행할 수 없으므로~ 파일을 로드할 수 없습니다" 오류 해결 방법 메모
+
+원인
+윈도우 시스템 설정에서 스크립트를 실행할 권한이 없어서 발생하는 오류
+
+해결과정
+1. windows PowerShell 관리자 권한 실행
+2. get-ExecutionPolicy 로 현재의 권한 상태 확인
+(Restricted로 되어있을 것임.)
+3. Set-ExecutionPolicy RemoteSigned 로 권한 상태를 RemoteSigned 로 변경.
+4. get-ExecutionPolicy로 잘 바뀌었는지 확인
+
+Restricted : 스크립트 실행 불가 (디폴트값)
+AllSinged : 신뢰할 수 있는 스크립트 파일만 실행 가능
+RemoteSigned : 로컬에서 내가 생성한 스크립트와, 신뢰할 수 있는 스크립트 파일만 실행 가능
+Unrestricted : 모든 스크립트 실행 가능 
